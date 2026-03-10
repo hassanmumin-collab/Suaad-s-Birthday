@@ -725,9 +725,24 @@ h1, h2, h3 {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================================================
-   RESPONSIVE — MOBILE
-   ============================================================ */
+/* Desktop: cake-scene (cake+lyrics) and video sit side by side,
+   button and message span full width below */
+@media (min-width: 601px) {
+  #cake-section {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    column-gap: 48px;
+  }
+  #cake-section .section-header  { grid-column: 1 / -1; }
+  #cake-section .cake-scene       { grid-column: 1; grid-row: 2; }
+  #cake-section .cake-video-panel { grid-column: 2; grid-row: 2; align-self: center; }
+  #cake-section #blow-btn         { grid-column: 1 / -1; justify-self: center; }
+  #cake-section #birthday-message { grid-column: 1 / -1; }
+  #cake-section #confetti-canvas  { grid-column: 1 / -1; }
+}
+
+/* Mobile: video already flows naturally after button in HTML */
 
 /* Touch devices: always show upload overlay at low opacity so
    users know they can tap it (no hover on touchscreens) */
