@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday — A Palermo Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ░░░ INTRO SCREEN ░░░ -->
+  <div id="intro-screen">
+    <div class="intro-inner">
+      <div class="portrait-wrapper" id="portrait-wrapper">
+        <img src="images/sister.jpg" alt="A photo of you" class="portrait" id="portrait-img" />
+        <label class="upload-overlay" for="photo-upload" title="Upload a photo">
+          <span class="upload-icon">📷</span>
+          <span class="upload-label">Change photo</span>
+        </label>
+      </div>
+
+      <!-- Hidden file input -->      
+      <input type="file" id="photo-upload" accept="image/*" style="display:none" onchange="handlePhotoUpload(event)" />
+
+      <h1 class="intro-title">Happy Birthday Suaad</h1>
+      <button class="btn-primary" onclick="startExperience()">Start the Journey</button>
+    </div>
+  </div>
+
+  <!-- ░░░ MAIN SITE (hidden until intro dismissed) ░░░ -->
+  <main id="main-site" class="hidden">
+
+    <!-- 1. HERO -->
+    <section id="hero">
+      <div class="sun"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">A little Palermo sunset for you</h1>
+        <button class="btn-primary" onclick="startJourney()">Explore the Journey ↓</button>
+      </div>
+    </section>
+
+    <!-- 2. LANTERN SCENE -->
+    <section id="lantern-section">
+      <div class="section-header">
+        <h2>Floating Lights for You</h2>
+        <p>Every lantern carries a wish into the Palermo sky.</p>
+      </div>
+      <div id="lantern-container"></div>
+    </section>
+
+    <!-- 3. VIDEO SECTION -->
+    <!-- 4. CAKE SECTION -->
+    <section id="cake-section">
+      <div class="section-header">
+        <h2>Make a Wish</h2>
+        <p>Close your eyes, take a breath…</p>
+      </div>
+
+      <div class="cake-scene">
+
+        <div class="cake-and-candles">
+          <!-- 5 candles row -->
+        <div id="flame-wrapper" class="candles-row">
+          <div class="candle">
+            <div class="flame"></div>
+            <div class="candle-stick"></div>
+          </div>
+          <div class="candle">
+            <div class="flame"></div>
+            <div class="candle-stick"></div>
+          </div>
+          <div class="candle candle-tall">
+            <div class="flame"></div>
+            <div class="candle-stick"></div>
+          </div>
+          <div class="candle">
+            <div class="flame"></div>
+            <div class="candle-stick"></div>
+          </div>
+          <div class="candle">
+            <div class="flame"></div>
+            <div class="candle-stick"></div>
+          </div>
+        </div>
+
+        <!-- Cake body -->
+        <div class="cake">
+          <!-- Frosting drips on top tier -->
+          <div class="cake-top">
+            <div class="drip drip-1"></div>
+            <div class="drip drip-2"></div>
+            <div class="drip drip-3"></div>
+            <div class="drip drip-4"></div>
+          </div>
+          <!-- Top tier -->
+          <div class="cake-body cake-tier-top">
+            <div class="cake-stripe"></div>
+            <div class="cake-stripe"></div>
+          </div>
+          <!-- Middle frosting band -->
+          <div class="cake-frosting-band"></div>
+          <!-- Bottom tier -->
+          <div class="cake-body cake-tier-bottom">
+            <div class="cake-stripe"></div>
+            <div class="cake-stripe"></div>
+            <div class="cake-stripe"></div>
+          </div>
+          <div class="cake-bottom"></div>
+          <div class="cake-plate"></div>
+        </div>
+        </div> <!-- /.cake-and-candles -->
+
+        <!-- Lyrics panel -->
+        <div class="lyrics-panel">
+          <p class="lyrics-song-title">🎵 Ordinary — Alex Warren</p>
+          <div class="lyrics-text">
+            <p>You're not like anybody else I've ever known</p>
+            <p>You turn the ordinary into something beautiful</p>
+            <p>You hold my hand and suddenly I'm not alone</p>
+            <p>With you the ordinary feels incredible</p>
+            <br>
+            <p>I used to think that I needed something more</p>
+            <p>Some big grand gesture, something to live for</p>
+            <p>But then you smiled and I realised the score</p>
+            <p>The ordinary, that's what I adore</p>
+            <br>
+            <p>So here's to you on your special day</p>
+            <p>For making every moment feel this way</p>
+            <p>You make the everyday feel like a dream</p>
+            <p>Happy birthday — you know what I mean 🌸</p>
+          </div>
+        </div>
+
+        <!-- Video panel -->
+        <div class="cake-video-panel">
+          <p class="cake-video-label">🎥 Palermo, Sicily</p>
+          <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=Sj-W0W7We7g"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch Palermo video on YouTube"
+          >
+            <img
+              src="https://img.youtube.com/vi/Sj-W0W7We7g/hqdefault.jpg"
+              alt="Palermo, Sicily"
+              class="video-card-thumb"
+            />
+            <div class="video-card-overlay">
+              <div class="video-card-play">
+                <svg viewBox="0 0 68 48" width="60" height="42">
+                  <path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C56.1 0 34 0 34 0S11.9 0 7.5 1.7a8.5 8.5 0 0 0-6 6C0 12.1 0 24 0 24s0 11.9 1.5 16.3a8.5 8.5 0 0 0 6 6C11.9 48 34 48 34 48s22.1 0 26.5-1.7a8.5 8.5 0 0 0 6-6C68 35.9 68 24 68 24s0-11.9-1.5-16.3z" fill="#ff0000"/>
+                  <path d="M27 34l18-10-18-10v20z" fill="#fff"/>
+                </svg>
+              </div>
+              <span class="video-card-label">Watch on YouTube</span>
+            </div>
+          </a>
+        </div>
+
+      </div> <!-- /.cake-scene -->
+
+      <button class="btn-primary blow-btn" id="blow-btn" onclick="blowCandle()">🎂 Blow the Candle</button>
+      <div id="birthday-message" class="hidden">
+        <p>
+          May your life be full of adventure, beauty, and sunsets like Palermo.<br />
+          <strong>Happy Birthday.</strong>
+        </p>
+      </div>
+
+      <!-- Confetti canvas -->
+      <canvas id="confetti-canvas"></canvas>
+    </section>
+
+  </main>
+
+  <!-- YouTube IFrame API player — must live outside #main-site so it
+       initialises even before the user dismisses the intro screen -->
+  <div id="birthday-song" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;"></div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+</body>
+</html>
