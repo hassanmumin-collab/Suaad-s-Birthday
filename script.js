@@ -147,6 +147,8 @@ function createLanterns() {
    immediately inside the button-click handler.
    ---------------------------------------------------------- */
 var ytPlayer;
+var stopConfettiFlag = false;
+
 function onYouTubeIframeAPIReady() {
   ytPlayer = new YT.Player('birthday-song', {
     height: '0',
@@ -155,8 +157,15 @@ function onYouTubeIframeAPIReady() {
     playerVars: {
       autoplay: 0,
       controls: 0,
-      loop:     1,
-      playlist: 'byxFUKxhT3s'
+      loop:     0
+    },
+    events: {
+      onStateChange: function(e) {
+        // YT.PlayerState.ENDED === 0
+        if (e.data === 0) {
+          stopConfettiFlag = true;
+        }
+      }
     }
   });
 }
@@ -230,12 +239,10 @@ function startConfetti() {
   }));
 
   let animId;
-  let elapsed = 0;
-  const MAX_MS = 7000; // stop after 7 seconds
+
+  stopConfettiFlag = false;  // reset each time confetti starts
 
   function draw(timestamp) {
-    if (!draw.start) draw.start = timestamp;
-    elapsed = timestamp - draw.start;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -250,6 +257,12 @@ function startConfetti() {
       if (p.x > canvas.width + p.w)  p.x = -p.w;
       if (p.x < -p.w) p.x = canvas.width + p.w;
 
+      // Recycle particles to the top so confetti flows continuously
+      if (p.y > canvas.height + p.h) {
+        p.y = -p.h;
+        p.x = Math.random() * canvas.width;
+      }
+
       if (p.y < canvas.height + p.h) allGone = false;
 
       ctx.save();
@@ -261,7 +274,7 @@ function startConfetti() {
       ctx.restore();
     });
 
-    if (!allGone && elapsed < MAX_MS) {
+    if (!allGone && !stopConfettiFlag) {
       animId = requestAnimationFrame(draw);
     } else {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
