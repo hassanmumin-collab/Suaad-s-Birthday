@@ -99,13 +99,14 @@ h1, h2, h3 {
 }
 
 .portrait-wrapper {
-  width: 180px;
-  height: 180px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid #e8955e;
   box-shadow: 0 0 40px rgba(232, 149, 94, 0.5);
   margin-bottom: 8px;
+  position: relative;
 }
 
 .portrait {
